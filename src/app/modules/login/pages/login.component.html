@@ -1,22 +1,19 @@
 <div class="container">
-    <h5 class="auth-logo animated fadeInUp">
+    <h5 class="auth-logo">
       <i class="fa fa-circle text-gray"></i>
       Hazardy
       <i class="fa fa-circle text-warning"></i>
     </h5>
-    <widget
-      class="widget-auth animated fadeInUp mx-auto"
-      [title]="'<h3 class=mt-0>Login to Hazardy</h3>'"
-      [customHeader]="true"
+    <div
+      class="widget-auth mx-auto"
+      [title]="'<h3 class=mt-0>Login to your Web App</h3>'"
       bodyClass="mt-0"
     >
       <p class="widget-auth-info">
         Use your email to sign in.
       </p>
       <form class="login-form" (ngSubmit)="login()">
-        <alert type="danger alert-sm" *ngIf="loginService.errorMessage">
-          {{loginService.errorMessage}}
-        </alert>
+        
         <div class="form-group">
           <input name="email" [(ngModel)]="email" class="form-control no-border" id="email" type="text" placeholder="Email" required>
         </div>
@@ -29,7 +26,7 @@
         Don't have an account? Sign up now!
       </p>
       <a class="d-block text-center" routerLink="/register">Create an Account</a>
-    </widget>
+    </div>
     <footer class="auth-footer">
       2020 &copy; Hazardy
     </footer>

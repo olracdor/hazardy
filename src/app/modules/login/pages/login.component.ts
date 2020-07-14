@@ -1,39 +1,18 @@
-import {Component, HostBinding} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../login.service';
-import {ActivatedRoute} from '@angular/router';
-import {AppConfig} from '../../../configs/app.config';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  @HostBinding('class') classes = 'auth-page app';
-
+export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
+  constructor(public loginService: LoginService) { }
 
-  constructor(
-    public loginService: LoginService,
-    private route: ActivatedRoute,
-    appConfig: AppConfig
-  ) {
-    const config: any = appConfig.getConfig();
-    const creds = config.auth;
-    this.email = creds.email;
-    this.password = creds.password;
-
-    if (this.loginService.isAuthenticated()) {
-      this.loginService.receiveLogin();
-    }
-
-    this.route.queryParams.subscribe((params) => {
-      if (params.token) {
-        this.loginService.receiveToken(params.token);
-      }
-    });
+  ngOnInit(): void {
   }
-
   public login() {
     const {email, password} = this;
 

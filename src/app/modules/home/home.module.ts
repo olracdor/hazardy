@@ -2,16 +2,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
-import { VehicleComponent } from './pages/vehicles.component';
+import { HomeComponent } from './pages/home.component';
 
 export const routes = [
-  { path: '', component: VehicleComponent, pathMatch: 'full' }
+  { path: '', component: HomeComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
   declarations: [
-    VehicleComponent
+    HomeComponent
   ],
   imports: [
     CommonModule,
@@ -19,6 +18,6 @@ export const routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class VehicleModule {
+export class HomeModule {
   static routes = routes;
 }

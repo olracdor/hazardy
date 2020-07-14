@@ -24,10 +24,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/app/shared/pages/styles/application.scss"
+              "src/styles.css"
             ],
-
-            "scripts": ["node_modules/jquery/dist/jquery.min.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {

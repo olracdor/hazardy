@@ -1,29 +1,21 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule, PreloadAllModules,Routes } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {ToastrModule} from 'ngx-toastr';
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppConfig } from './configs/app.config';
 import {LoginService} from './modules/login/login.service';
-import {AppGuard} from './core/app.guard';
-import {AppRoutingModule} from './app-routing.module';
-
+import {AppGuard} from './app.guard';
+import { AppConfig } from './config/app.config';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
     HttpClientModule,
-    ToastrModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [AppConfig,
+  providers: [ AppConfig,
     LoginService,
     AppGuard],
   bootstrap: [AppComponent]
