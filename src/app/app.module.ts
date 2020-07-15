@@ -6,6 +6,7 @@ import {LoginService} from './modules/login/login.service';
 import {AppGuard} from './app.guard';
 import { AppConfig } from './config/app.config';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent
@@ -13,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [ AppConfig,
     LoginService,

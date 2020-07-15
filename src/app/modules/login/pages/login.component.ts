@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     const {email, password} = this;
 
     if (email.length !== 0 && password.length !== 0) {
-      this.loginService.loginUser({email, password});
+      this.loginService.loginUser(email, password);
     }
   }
 }

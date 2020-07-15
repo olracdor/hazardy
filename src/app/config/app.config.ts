@@ -3,9 +3,10 @@ import { environment } from './environment';
 
 declare let jQuery: any;
 
-const hostApi = ""; //process.env.NODE_ENV === 'development' ? 'http://localhost' : 'https://flatlogic-node-backend.herokuapp.com';
-const portApi = "";//process.env.NODE_ENV === 'development' ? 8080 : '';
+const hostApi = "https://vioido9u5.execute-api.ap-southeast-2.amazonaws.com/dev/v1";
+const portApi = "";
 const baseURLApi = `${hostApi}${portApi ? `:${portApi}` : ``}`;
+const apiKey = "";
 
 @Injectable()
 export class AppConfig {
@@ -13,12 +14,12 @@ export class AppConfig {
         name: 'Harardy',
         title: 'Hazardy App with Angular 9.0',
         version: '1.0.0',
-        isBackend: environment.backend,
+        apiKey,
         hostApi,
         portApi,
         baseURLApi,
         auth: {
-            email: 'santillan.rod@gmail.com',
+            email: '',
             password: ''
         },
         debug: true,
