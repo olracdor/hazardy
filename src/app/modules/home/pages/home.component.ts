@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { HomeService } from '../home.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-home',
@@ -6,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  private dataSource: any;
-  constructor() { }
+  dataSource: MatTableDataSource<any>;
+  constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
   }
@@ -20,11 +22,15 @@ export class HomeComponent implements OnInit {
     const buffer = 230; // Add more data if user at the 230px range from the bottom
     const limit = scrollHeight - offsetHeight - buffer;    
     if (scrollLocation > limit) {
-      this.dataSource = this.dataSource.concat(this.getHazardData());
+      this.dataSource.data.push(this.getHazardData());
     }
   }
 
   getHazardData(){
-
+    this.homeService.getHazards().subscribe((res: any) => {
+        this.dataSource = res;
+    }, err => {
+        console.log(err);
+    });
   }
 }

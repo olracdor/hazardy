@@ -1,6 +1,7 @@
 import { AppConfig } from '../../config/app.config';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable  } from 'rxjs';
 
 @Injectable()
 export class HomeService {
@@ -24,19 +25,22 @@ export class HomeService {
         this._isFetching = val;
     }
 
-    getTodayHazards(creds) {
+    getHazards() : Observable<Object>{
+        let results;
         let headers = {
             'headers': {
               'Content-type': 'application/json',
               'x-api-key' : this.apiKey
             }
         };
+
         this.http.get(`${this.baseURLApi}/hazards?companyId=${localStorage.getItem("companyId")}`, headers).subscribe((res: any) => {
-            const token = res.token;
-          
+            results = res;
         }, err => {
-            
+            console.log(err);
+            results = {};
         });
+        return results;
     }
 
 

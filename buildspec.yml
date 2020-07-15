@@ -12,8 +12,6 @@ phases:
       - npm install
   build:
     commands:
-      - echo testing...
-      - npm test
       - echo building...
       - ng build --prod
 artifacts:
