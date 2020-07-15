@@ -31,7 +31,7 @@ export class HomeService {
               'x-api-key' : this.apiKey
             }
         };
-        this.http.get(`${this.baseURLApi}/login`, headers).subscribe((res: any) => {
+        this.http.get(`${this.baseURLApi}/hazards?companyId=${localStorage.getItem("companyId")}`, headers).subscribe((res: any) => {
             const token = res.token;
           
         }, err => {

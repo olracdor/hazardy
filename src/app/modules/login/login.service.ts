@@ -1,6 +1,7 @@
 import { AppConfig } from '../../config/app.config';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class LoginService {
@@ -10,7 +11,7 @@ export class LoginService {
     _isFetching: boolean = false;
     _errorMessage: string = '';
 
-    constructor(appConfig: AppConfig, private http: HttpClient) {
+    constructor(appConfig: AppConfig, private http: HttpClient, private router: Router) {
         this.config = appConfig.getConfig();
         this.baseURLApi = this.config.baseURLApi;
         this.apiKey = this.config.apiKey;
@@ -43,6 +44,7 @@ export class LoginService {
         this.http.post(`${this.baseURLApi}/login`, JSON.stringify(payload), headers).subscribe((res: any) => {
             const token = res.token;
             this.receiveToken(token)
+            this.router.navigate(['/home']);
         }, err => {
             this.loginError('Something was wrong. Try again');
         });
@@ -50,7 +52,7 @@ export class LoginService {
     receiveToken(token) {
         
         localStorage.setItem('token', token);
-       
+        
       }
     loginError(message) {
         console.log(message);
