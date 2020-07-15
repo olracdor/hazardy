@@ -2,6 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.11.
 
+This project was deployed using AWS CodePipeline. https://hazardy.s3-ap-southeast-2.amazonaws.com/hazardy/index.html
+Webpage is still in progress.
+
 ## Install dependencies
 
 Run `npm install`.
