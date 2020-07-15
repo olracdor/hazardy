@@ -42,17 +42,17 @@ export class LoginService {
             password: password
         };
         this.http.post(`${this.baseURLApi}/login`, JSON.stringify(payload), headers).subscribe((res: any) => {
-            const token = res.token;
-            this.receiveToken(token)
+            const {token, companyId} = res;
+            this.receiveToken(token, companyId)
             this.router.navigate(['/home']);
         }, err => {
             this.loginError('Something was wrong. Try again');
         });
     }
-    receiveToken(token) {
+    receiveToken(token, companyId) {
         
         localStorage.setItem('token', token);
-        
+        localStorage.setItem('companyId', companyId);
       }
     loginError(message) {
         console.log(message);
