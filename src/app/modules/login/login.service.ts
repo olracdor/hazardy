@@ -42,17 +42,17 @@ export class LoginService {
             password: password
         };
        this.http.post(`${this.baseURLApi}/authenticate`, JSON.stringify(payload), headers).subscribe((res: any) => {
-            const {token, companyId} = res;
-            this.receiveToken(token, companyId)
+            const {token, userId} = res;
+            this.receiveToken(token, userId)
             this.router.navigate(['/home']);
         }, err => {
             this.loginError('Something was wrong. Try again');
         });
     }
-    receiveToken(token, companyId) {
+    receiveToken(token, userId) {
         
         localStorage.setItem('token', token);
-        localStorage.setItem('companyId', companyId);
+        localStorage.setItem('userId', userId);
       }
     loginError(message) {
         console.log(message);
