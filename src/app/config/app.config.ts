@@ -3,7 +3,7 @@ import { environment } from './environment';
 
 declare let jQuery: any;
 
-const hostApi = "https://ksfwxxziei.execute-api.ap-southeast-2.amazonaws.com/dev/v1/login";
+const hostApi = "https://ksfwxxziei.execute-api.ap-southeast-2.amazonaws.com/dev/v1";
 const portApi = "";
 const baseURLApi = `${hostApi}${portApi ? `:${portApi}` : ``}`;
 const apiKey = "";

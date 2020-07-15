@@ -41,7 +41,7 @@ export class LoginService {
             username: username,
             password: password
         };
-        this.http.post(`${this.baseURLApi}/login`, JSON.stringify(payload), headers).subscribe((res: any) => {
+       this.http.post(`${this.baseURLApi}/authenticate`, JSON.stringify(payload), headers).subscribe((res: any) => {
             const {token, companyId} = res;
             this.receiveToken(token, companyId)
             this.router.navigate(['/home']);
@@ -57,5 +57,4 @@ export class LoginService {
     loginError(message) {
         console.log(message);
     }
-
 }
