@@ -14,8 +14,7 @@ phases:
     commands:
       - echo building...
       - ng build --prod
-artifacts:
-  files:
-    - "**/*"
-  discard-paths: no
-  base-directory: dist/hazardy
+      - echo deploying...
+      - aws s3 cp dist/hazardy/* s3://hazardy/
+      - aws elasticbeanstalk update-environment --application-name "hazardy" --version-label "Sample Application-1" --environment-name "Hazardy-env"
+      - echo deployment complete...
